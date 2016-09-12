@@ -61,6 +61,8 @@ input {
     width: 138px;
     height: 138px;
     margin: 0 60px;
+    text-align: center;
+    padding-top: 40px;
 }
 
 .title {
