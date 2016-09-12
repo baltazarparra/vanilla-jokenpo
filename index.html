@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vanilla JoKenPo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <div class="container">
+            <section class="score">
+                <label class="user-score">
+                    You
+                    <input type="text" data-js="user-score" value="" placeholder="0" readonly>
+                </label>
+                <label class="cpu-score">
+                    Cpu
+                    <input type="text" data-js="cpu-score" value="" placeholder="0" readonly>
+                </label>
+            </section>
+            <section class="choices">
+                <div class="choice" data-js="user-choice"></div>
+                <h1 class="title">
+                    <p>Jo</p>
+                    <p>Ken</p>
+                    <p>Po</p>
+                </h1>
+                <div class="choice" data-js="cpu-choice"></div>
+            </section>
+            <section class="jokenpo">
+                <div class="jokenpo-choice">
+                    <img src="rock.svg" alt="Rock">
+                </div>
+                <div class="jokenpo-choice">
+                    <img src="paper.svg" alt="Paper">
+                </div>
+                <div class="jokenpo-choice">
+                    <img src="scissor.svg" alt="Scissor">
+                </div>
+            </section>
+        </div>
+    </main>
+<script src="main.js"></script>
+</body>
+</html>
