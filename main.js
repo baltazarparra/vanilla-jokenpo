@@ -17,13 +17,16 @@
             },
 
             initEvents: function initEvents() {
-                $rock.addEventListener('click', this.rockChoice);
-                $paper.addEventListener('click', this.paperChoice);
-                $scissor.addEventListener('click', this.scissorChoice);
+                $rock.addEventListener('click', this.optionChoice('rock'));
+                $paper.addEventListener('click', this.optionChoice('paper'));
+                $scissor.addEventListener('click', this.optionChoice('scissor'));
             },
 
-            rockChoice: function rockChoice() {
-                $userChoice.setAttribute("src", "rock.svg");
+            score: function score() {
+
+            },
+
+            cpuChoice: function cpuChoice() {
                 var cpuChoice = Math.random();
                 if (cpuChoice < 0.3) {
                     return $cpuChoice.setAttribute("src", "rock.svg");
@@ -33,26 +36,16 @@
                 return $cpuChoice.setAttribute("src", "scissor.svg");
             },
 
-            paperChoice: function paperChoice() {
-                $userChoice.setAttribute("src", "paper.svg");
-                var cpuChoice = Math.random();
-                if (cpuChoice < 0.3) {
-                    return $cpuChoice.setAttribute("src", "rock.svg");
-                } else if (cpuChoice < 0.6) {
-                    return $cpuChoice.setAttribute("src", "paper.svg");
-                }
-                return $cpuChoice.setAttribute("src", "scissor.svg");
+            optionChoice: function optionChoice(option) {
+                var self = this;
+                return function () {
+                    $userChoice.setAttribute("src", option + ".svg");
+                    self.cpuChoice();
+                  }
             },
 
-            scissorChoice: function scissorChoice() {
-                $userChoice.setAttribute("src", "scissor.svg");
-                var cpuChoice = Math.random();
-                if (cpuChoice < 0.3) {
-                    return $cpuChoice.setAttribute("src", "rock.svg");
-                } else if (cpuChoice < 0.6) {
-                    return $cpuChoice.setAttribute("src", "paper.svg");
-                }
-                return $cpuChoice.setAttribute("src", "scissor.svg");
+            resultChoice: function resultChoice() {
+
             }
         };
     })();
