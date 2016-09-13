@@ -28,7 +28,14 @@ input {
 
 .container {
     width: 992px;
-    margin: 0 auto;
+    margin: 30px
+     auto;
+}
+
+@media (max-width: 992px) {
+    .container {
+        width: 90%;
+    }
 }
 
 .score {
