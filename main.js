@@ -1,4 +1,4 @@
-(function(window, document){
+(function(jokenpo){
 
     'use strict';
 
@@ -22,34 +22,32 @@
                 $scissor.addEventListener('click', this.optionChoice('scissor'));
             },
 
-            score: function score() {
-
-            },
-
             cpuChoice: function cpuChoice() {
                 var cpuChoice = Math.random();
                 if (cpuChoice < 0.3) {
-                    return $cpuChoice.setAttribute("src", "rock.svg");
+                    var cpuChoiceOutput = 'rock';
+                    $cpuChoice.setAttribute("src", cpuChoiceOutput + ".svg");
+                    return cpuChoiceOutput;
                 } else if (cpuChoice < 0.6) {
-                    return $cpuChoice.setAttribute("src", "paper.svg");
+                    var cpuChoiceOutput = 'paper';
+                    $cpuChoice.setAttribute("src", cpuChoiceOutput + ".svg");
+                    return cpuChoiceOutput;
                 }
-                return $cpuChoice.setAttribute("src", "scissor.svg");
+                var cpuChoiceOutput = 'scissor';
+                $cpuChoice.setAttribute("src", cpuChoiceOutput + ".svg");
+                return cpuChoiceOutput;
             },
 
             optionChoice: function optionChoice(option) {
-                var self = this;
                 return function () {
+                    var cpuOption = app.cpuChoice();
                     $userChoice.setAttribute("src", option + ".svg");
-                    self.cpuChoice();
-                  }
-            },
-
-            resultChoice: function resultChoice() {
-
+                    jokenpo.play(option, cpuOption);
+                }
             }
         };
     })();
 
     app.init();
 
-})(window, document);
+})(window.jokenpo);
