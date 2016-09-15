@@ -1,6 +1,9 @@
-    (function(){
+(function(){
 
     'use strict';
+
+    var $userScore = document.querySelector('[data-js="userScore"]');
+    var $cpuScore = document.querySelector('[data-js="cpuScore"]');
 
     var jokenpo = (function dataController(user, cpu) {
         return {
@@ -16,37 +19,40 @@
 
             rockChoice: function rockChoice(cpu) {
                 if(cpu === 'rock') {
-                    console.log('draw');
+                    return jokenpo.handleScore('draw');
                 } else if (cpu === 'paper') {
-                    console.log('lose');
+                    return jokenpo.handleScore('lose');
                 } else {
-                    console.log('win');
+                    return jokenpo.handleScore('win');
                 }
             },
 
             paperChoice: function paperChoice(cpu) {
                 if(cpu === 'paper') {
-                    console.log('draw');
+                    return jokenpo.handleScore('draw');
                 } else if (cpu === 'scissor') {
-                    console.log('lose');
+                    return jokenpo.handleScore('lose');
                 } else {
-                    console.log('win');
+                    return jokenpo.handleScore('win');
                 }
             },
 
             scissorChoice: function scissorChoice(cpu) {
                 if(cpu === 'scissor') {
-                    console.log('draw');
+                    return jokenpo.handleScore('draw');
                 } else if (cpu === 'rock') {
-                    console.log('lose');
+                    return jokenpo.handleScore('lose');
                 } else {
-                    console.log('win');
+                    return jokenpo.handleScore('win');
                 }
             },
 
-            score: function score(user, cpu) {
-                return { user: 0, cpu: 0 };
+            handleScore: function handleScore(result) {
+                var userPoints = 0;
+                var cpuPoints = 0;
+                return $userScore.value = userPoints, $cpuScore.value = cpuPoints;
             }
+
         };
     })();
 

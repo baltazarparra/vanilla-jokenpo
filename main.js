@@ -7,8 +7,6 @@
     var $scissor = document.querySelector('[data-js="scissor"]');
     var $userChoice = document.querySelector('[data-js="user-choice"]');
     var $cpuChoice = document.querySelector('[data-js="cpu-choice"]');
-    var $userScore = document.querySelector('[data-js="userScore"]');
-    var $cpuScore = document.querySelector('[data-js="cpuScore"]');
 
     var app = (function appController() {
         return {
@@ -43,6 +41,7 @@
                     var cpuOption = app.cpuChoice();
                     $userChoice.setAttribute("src", option + ".svg");
                     jokenpo.play(option, cpuOption);
+                    jokenpo.handleScore();
                 }
             }
         };
