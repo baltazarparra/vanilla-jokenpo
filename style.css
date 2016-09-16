@@ -32,12 +32,6 @@ input {
      auto;
 }
 
-@media (max-width: 992px) {
-    .container {
-        width: 90%;
-    }
-}
-
 .score {
     display: flex;
 }
@@ -100,4 +94,55 @@ input {
 
 .jokenpo-choice:hover {
     background-color:  #89856a;
+}
+
+@media (max-width: 992px) {
+    .container {
+        width: 90%;
+    }
+}
+
+@media (max-width: 820px) {
+    .choice {
+        width: 100px;
+        height: 100px;
+        margin: 0 30px;
+        text-align: center;
+        padding-top: 20px;
+    }
+}
+
+@media (max-width: 620px) {
+    .title {
+        font-size: 40px;
+        line-height: 20px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 520px) {
+    .jokenpo-choice {
+        width: 80px;
+        height: 80px;
+        margin: 8px;
+        padding-top: 14px;
+    }
+}
+
+@media (max-width: 450px) {
+    .choices {
+        margin: 40px 0;
+    }
+    .choice {
+        width: 80px;
+        height: 80px;
+        margin: 0 20px;
+        text-align: center;
+        padding-top: 10px;
+    }
+    .title {
+        font-size: 20px;
+        line-height: 4px;
+        text-align: center;
+    }
 }
