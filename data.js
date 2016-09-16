@@ -2,57 +2,69 @@
 
     'use strict';
 
-    var $userScore = document.querySelector('[data-js="userScore"]');
-    var $cpuScore = document.querySelector('[data-js="cpuScore"]');
-
     var jokenpo = (function dataController(user, cpu) {
+        var value1 = 0;
+        var value2 = 0;
         return {
 
             play: function play(user, cpu) {
-                if(user === 'rock') {
-                    return jokenpo.rockChoice(cpu);
+
+                if (user === 'rock') {
+
+                    if (cpu === 'rock') {
+                        return jokenpo.handleScore('draw');
+                    } else if (cpu === 'paper') {
+                        return jokenpo.handleScore('lose');
+                    } else if (cpu === 'scissor'){
+                        return jokenpo.handleScore('win');
+                    }
+
                 } else if (user === 'paper') {
-                    return jokenpo.paperChoice(cpu);
-                }
-                return jokenpo.scissorChoice(cpu);
-            },
 
-            rockChoice: function rockChoice(cpu) {
-                if(cpu === 'rock') {
-                    return jokenpo.handleScore('draw');
-                } else if (cpu === 'paper') {
-                    return jokenpo.handleScore('lose');
-                } else {
-                    return jokenpo.handleScore('win');
-                }
-            },
+                    if (cpu === 'paper') {
+                        return jokenpo.handleScore('draw');
+                    } else if (cpu === 'scissor') {
+                        return jokenpo.handleScore('lose');
+                    } else if (cpu === 'rock'){
+                        return jokenpo.handleScore('win');
+                    }
 
-            paperChoice: function paperChoice(cpu) {
-                if(cpu === 'paper') {
-                    return jokenpo.handleScore('draw');
-                } else if (cpu === 'scissor') {
-                    return jokenpo.handleScore('lose');
-                } else {
-                    return jokenpo.handleScore('win');
-                }
-            },
+                } else if (user === 'scissor') {
 
-            scissorChoice: function scissorChoice(cpu) {
-                if(cpu === 'scissor') {
-                    return jokenpo.handleScore('draw');
-                } else if (cpu === 'rock') {
-                    return jokenpo.handleScore('lose');
-                } else {
-                    return jokenpo.handleScore('win');
+                    if (cpu === 'scissor') {
+                        return jokenpo.handleScore('draw');
+                    } else if (cpu === 'rock') {
+                        return jokenpo.handleScore('lose');
+                    } else if (cpu === 'paper'){
+                        return jokenpo.handleScore('win');
+                    }
+
                 }
             },
 
             handleScore: function handleScore(result) {
-                var userPoints = 0;
-                var cpuPoints = 0;
-                return $userScore.value = userPoints, $cpuScore.value = cpuPoints;
-            }
+                if (result === 'win') {
+                    return jokenpo.user();
+                } else if (result === 'lose') {
+                    return jokenpo.cpu();
+                } else if (result === 'draw') {
+                    return jokenpo.draw();
+                }
+            },
 
+            user: function user() {
+                value1 += 1;
+                console.log('user ' + value1);
+            },
+
+            cpu: function cpu() {
+                value2 += 1;
+                console.log('cpu ' + value2);
+            },
+
+            draw: function draw() {
+                console.log('draw');
+            }
         };
     })();
 
