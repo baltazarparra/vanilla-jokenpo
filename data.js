@@ -2,9 +2,12 @@
 
     'use strict';
 
+    var $userScore = document.querySelector('[data-js="userScore"]');
+    var $cpuScore = document.querySelector('[data-js="cpuScore"]');
+
     var jokenpo = (function dataController(user, cpu) {
-        var value1 = 0;
-        var value2 = 0;
+        var userScore = 0;
+        var cpuScore = 0;
         return {
 
             play: function play(user, cpu) {
@@ -44,26 +47,28 @@
 
             handleScore: function handleScore(result) {
                 if (result === 'win') {
-                    return jokenpo.user();
+                    return jokenpo.userPoint();
                 } else if (result === 'lose') {
-                    return jokenpo.cpu();
-                } else if (result === 'draw') {
-                    return jokenpo.draw();
+                    return jokenpo.cpuPoint();
                 }
             },
 
-            user: function user() {
-                value1 += 1;
-                console.log('user ' + value1);
+            userPoint: function userPoint() {
+                userScore += 1;
+                $userScore.value = userScore
+                if (userScore > 2) {
+                    $userScore.value = 'Win';
+                    $cpuScore.value = 'Lose';
+                }
             },
 
-            cpu: function cpu() {
-                value2 += 1;
-                console.log('cpu ' + value2);
-            },
-
-            draw: function draw() {
-                console.log('draw');
+            cpuPoint: function cpuPoint() {
+                cpuScore += 1;
+                $cpuScore.value = cpuScore
+                if (cpuScore > 2) {
+                    $userScore.value = 'Lose';
+                    $cpuScore.value = 'Win';
+                }
             }
         };
     })();
