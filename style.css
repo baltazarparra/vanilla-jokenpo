@@ -67,6 +67,14 @@ input {
     padding-top: 40px;
 }
 
+.choice-user {
+    transform: rotate(90deg);
+}
+
+.choice-cpu {
+    transform: rotate(-90deg) scaleX(-1);
+}
+
 .title {
     color:  #743f27;
     font-size: 120px;

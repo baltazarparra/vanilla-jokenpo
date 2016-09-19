@@ -20,9 +20,9 @@
             },
 
             initEvents: function initEvents() {
-                $rock.addEventListener('click', this.optionChoice('rock'));
-                $paper.addEventListener('click', this.optionChoice('paper'));
-                $scissor.addEventListener('click', this.optionChoice('scissor'));
+                $rock.addEventListener('click', this.handleChoices('rock'));
+                $paper.addEventListener('click', this.handleChoices('paper'));
+                $scissor.addEventListener('click', this.handleChoices('scissor'));
             },
 
             cpuChoice: function cpuChoice() {
@@ -31,7 +31,7 @@
                     var cpuChoiceOutput = 'rock';
                     $cpuChoice.setAttribute("src", cpuChoiceOutput + ".svg");
                     return cpuChoiceOutput;
-                } else if (cpuChoice < 0.6) {
+                } else if (cpuChoice < 0.7) {
                     var cpuChoiceOutput = 'paper';
                     $cpuChoice.setAttribute("src", cpuChoiceOutput + ".svg");
                     return cpuChoiceOutput;
@@ -41,7 +41,7 @@
                 return cpuChoiceOutput;
             },
 
-            optionChoice: function optionChoice(option) {
+            handleChoices: function handleChoices(option) {
                 return function () {
                     var cpuOption = app.cpuChoice();
                     $userChoice.setAttribute("src", option + ".svg");
@@ -49,30 +49,21 @@
                     $userScore.value = resultado.userScore;
                     $cpuScore.value = resultado.cpuScore;
                     if (resultado.userScore > 2) {
-                        app.userWin();
+                        $userScore.value = 'Win';
+                        $cpuScore.value = 'Lose';
+                        app.handleEndGame();
                     } else if (resultado.cpuScore > 2) {
-                        app.cpuWin();
+                        $userScore.value = 'Lose';
+                        $cpuScore.value = 'Win';
+                        app.handleEndGame();
                     }
                 };
             },
 
-            userWin: function userWin() {
-                $userScore.value = 'Win';
-                $cpuScore.value = 'Lose';
+            handleEndGame: function handleEndGame() {
                 $paperOption.setAttribute("src", "refresh.svg");
-                $rockOption.setAttribute("src", "http://sotawiki.net/images/e/e9/Founder_Tier_Raven_icon.png");
-                $scissorOption.setAttribute("src", "http://sotawiki.net/images/e/e9/Founder_Tier_Raven_icon.png");
-                $paperOption.addEventListener('click', function(){
-                    document.location.reload(true);
-                });
-            },
-
-            cpuWin: function cpuWin() {
-                $userScore.value = 'Lose';
-                $cpuScore.value = 'Win';
-                $paperOption.setAttribute("src", "refresh.svg");
-                $rockOption.setAttribute("src", "http://sotawiki.net/images/e/e9/Founder_Tier_Raven_icon.png");
-                $scissorOption.setAttribute("src", "http://sotawiki.net/images/e/e9/Founder_Tier_Raven_icon.png");
+                $rock.parentNode.removeChild($rock);
+                $scissor.parentNode.removeChild($scissor);
                 $paperOption.addEventListener('click', function(){
                     document.location.reload(true);
                 });
