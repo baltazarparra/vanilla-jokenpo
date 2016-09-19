@@ -49,28 +49,33 @@
                     $userScore.value = resultado.userScore;
                     $cpuScore.value = resultado.cpuScore;
                     if (resultado.userScore > 2) {
-                        $userScore.value = 'Win';
-                        $cpuScore.value = 'Lose';
-                        $paperOption.setAttribute("src", "refresh.svg");
-                        $rockOption.setAttribute("src", "http://sotawiki.net/images/e/e9/Founder_Tier_Raven_icon.png");
-                        $scissorOption.setAttribute("src", "http://sotawiki.net/images/e/e9/Founder_Tier_Raven_icon.png");
-                        $paperOption.addEventListener('click', function(){
-                            document.location.reload(true);
-                        });
-                    }
-                    $userScore.value = resultado.userScore;
-                    $cpuScore.value = resultado.cpuScore;
-                    if (resultado.cpuScore > 2) {
-                        $userScore.value = 'Lose';
-                        $cpuScore.value = 'Win';
-                        $paperOption.setAttribute("src", "refresh.svg");
-                        $rockOption.setAttribute("src", "http://sotawiki.net/images/e/e9/Founder_Tier_Raven_icon.png");
-                        $scissorOption.setAttribute("src", "http://sotawiki.net/images/e/e9/Founder_Tier_Raven_icon.png");
-                        $paperOption.addEventListener('click', function(){
-                            document.location.reload(true);
-                        });
+                        app.userWin();
+                    } else if (resultado.cpuScore > 2) {
+                        app.cpuWin();
                     }
                 };
+            },
+
+            userWin: function userWin() {
+                $userScore.value = 'Win';
+                $cpuScore.value = 'Lose';
+                $paperOption.setAttribute("src", "refresh.svg");
+                $rockOption.setAttribute("src", "http://sotawiki.net/images/e/e9/Founder_Tier_Raven_icon.png");
+                $scissorOption.setAttribute("src", "http://sotawiki.net/images/e/e9/Founder_Tier_Raven_icon.png");
+                $paperOption.addEventListener('click', function(){
+                    document.location.reload(true);
+                });
+            },
+
+            cpuWin: function cpuWin() {
+                $userScore.value = 'Lose';
+                $cpuScore.value = 'Win';
+                $paperOption.setAttribute("src", "refresh.svg");
+                $rockOption.setAttribute("src", "http://sotawiki.net/images/e/e9/Founder_Tier_Raven_icon.png");
+                $scissorOption.setAttribute("src", "http://sotawiki.net/images/e/e9/Founder_Tier_Raven_icon.png");
+                $paperOption.addEventListener('click', function(){
+                    document.location.reload(true);
+                });
             }
         };
     })();
