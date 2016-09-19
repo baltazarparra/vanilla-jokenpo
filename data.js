@@ -2,12 +2,6 @@
 
     'use strict';
 
-    var $userScore = document.querySelector('[data-js="userScore"]');
-    var $cpuScore = document.querySelector('[data-js="cpuScore"]');
-    var $rockOption = document.querySelector('[data-js="rockOption"]');
-    var $paperOption = document.querySelector('[data-js="paperOption"]');
-    var $scissorOption = document.querySelector('[data-js="scissorOption"]');
-
     var jokenpo = (function dataController(user, cpu) {
         var userScore = 0;
         var cpuScore = 0;
@@ -15,11 +9,11 @@
 
             play: function play(user, cpu) {
                 if (user === 'rock') {
-                    jokenpo.rockChoice(cpu);
+                    return jokenpo.rockChoice(cpu);
                 } else if (user === 'paper') {
-                    jokenpo.paperChoice(cpu);
+                    return jokenpo.paperChoice(cpu);
                 } else if (user === 'scissor') {
-                    jokenpo.scissorChoice(cpu);
+                    return jokenpo.scissorChoice(cpu);
                 }
             },
 
@@ -55,39 +49,13 @@
 
             handleScore: function handleScore(result) {
                 if (result === 'win') {
-                    return jokenpo.userPoint();
+                    userScore += 1;
                 } else if (result === 'lose') {
-                    return jokenpo.cpuPoint();
+                    cpuScore += 1;
                 }
-            },
-
-            userPoint: function userPoint() {
-                userScore += 1;
-                $userScore.value = userScore;
-                if (userScore > 2) {
-                    $userScore.value = 'Win';
-                    $cpuScore.value = 'Lose';
-                    $paperOption.setAttribute("src", "refresh.svg");
-                    $rockOption.setAttribute("src", "");
-                    $scissorOption.setAttribute("src", "");
-                    $paperOption.addEventListener('click', function(){
-                        document.location.reload(true);
-                    });
-                }
-            },
-
-            cpuPoint: function cpuPoint() {
-                cpuScore += 1;
-                $cpuScore.value = cpuScore;
-                if (cpuScore > 2) {
-                    $userScore.value = 'Lose';
-                    $cpuScore.value = 'Win';
-                    $paperOption.setAttribute("src", "refresh.svg");
-                    $rockOption.setAttribute("src", "");
-                    $scissorOption.setAttribute("src", "");
-                    $paperOption.addEventListener('click', function(){
-                        document.location.reload(true);
-                    });  
+                return {
+                    userScore: userScore,
+                    cpuScore: cpuScore
                 }
             }
         };

@@ -7,6 +7,11 @@
     var $scissor = document.querySelector('[data-js="scissor"]');
     var $userChoice = document.querySelector('[data-js="user-choice"]');
     var $cpuChoice = document.querySelector('[data-js="cpu-choice"]');
+    var $userScore = document.querySelector('[data-js="userScore"]');
+    var $cpuScore = document.querySelector('[data-js="cpuScore"]');
+    var $rockOption = document.querySelector('[data-js="rockOption"]');
+    var $paperOption = document.querySelector('[data-js="paperOption"]');
+    var $scissorOption = document.querySelector('[data-js="scissorOption"]');
 
     var app = (function appController() {
         return {
@@ -40,8 +45,31 @@
                 return function () {
                     var cpuOption = app.cpuChoice();
                     $userChoice.setAttribute("src", option + ".svg");
-                    jokenpo.play(option, cpuOption);
-                    jokenpo.handleScore();
+                    var resultado = jokenpo.play(option, cpuOption);
+                    $userScore.value = resultado.userScore;
+                    $cpuScore.value = resultado.cpuScore;
+                    if (resultado.userScore > 2) {
+                        $userScore.value = 'Win';
+                        $cpuScore.value = 'Lose';
+                        $paperOption.setAttribute("src", "refresh.svg");
+                        $rockOption.setAttribute("src", "http://sotawiki.net/images/e/e9/Founder_Tier_Raven_icon.png");
+                        $scissorOption.setAttribute("src", "http://sotawiki.net/images/e/e9/Founder_Tier_Raven_icon.png");
+                        $paperOption.addEventListener('click', function(){
+                            document.location.reload(true);
+                        });
+                    }
+                    $userScore.value = resultado.userScore;
+                    $cpuScore.value = resultado.cpuScore;
+                    if (resultado.cpuScore > 2) {
+                        $userScore.value = 'Lose';
+                        $cpuScore.value = 'Win';
+                        $paperOption.setAttribute("src", "refresh.svg");
+                        $rockOption.setAttribute("src", "http://sotawiki.net/images/e/e9/Founder_Tier_Raven_icon.png");
+                        $scissorOption.setAttribute("src", "http://sotawiki.net/images/e/e9/Founder_Tier_Raven_icon.png");
+                        $paperOption.addEventListener('click', function(){
+                            document.location.reload(true);
+                        });
+                    }
                 };
             }
         };
