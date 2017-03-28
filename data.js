@@ -58,6 +58,7 @@
                     cpuScore: cpuScore
                 }
             }
+
         };
     })();
 

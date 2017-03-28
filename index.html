@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Vanilla JoKenPo</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="app-images/manifest.json">
 </head>
 <body>
     <main>
@@ -45,8 +46,19 @@
                 </div>
             </section>
         </div>
-    </main>
+    </main> 
 <script src="data.js"></script>
 <script src="main.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+      .then(function () {
+        console.log('service worker registered');
+      })
+      .catch(function () {
+        console.warn('service worker failed');
+      });
+  }
+</script>
 </body>
 </html>
