@@ -8,17 +8,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="app-images/manifest.json">
     <meta name="theme-color" content="#d29161">
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js')
-          .then(function () {
-            console.log('service worker registered');
-          })
-          .catch(function () {
-            console.warn('service worker failed');
-          });
-      }
-    </script>
 </head>
 <body>
     <main>
@@ -59,6 +48,7 @@
             </section>
         </div>
     </main> 
+<script src="register.js"></script>
 <script src="data.js"></script>
 <script src="main.js"></script>
 </body>
