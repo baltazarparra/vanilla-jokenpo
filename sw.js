@@ -13,7 +13,7 @@ self.addEventListener('install', function (event) {
         '/refresh.svg',
         '/rock.svg',
         '/scissor.svg',
-        '/style.css'
+        '/style.css',
       ]);
     })
   )

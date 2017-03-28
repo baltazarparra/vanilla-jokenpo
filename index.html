@@ -7,6 +7,18 @@
     <title>Vanilla JoKenPo</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="app-images/manifest.json">
+    <meta name="theme-color" content="#d29161">
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
+          .then(function () {
+            console.log('service worker registered');
+          })
+          .catch(function () {
+            console.warn('service worker failed');
+          });
+      }
+    </script>
 </head>
 <body>
     <main>
@@ -23,7 +35,7 @@
             </section>
             <section class="choices">
                 <div class="choice">
-                    <img class="choice-user" data-js="user-choice">
+                    <img class="choice-user" data-js="user-choice" alt="jokenpo-svg">
                 </div>
                 <h1 class="title">
                     <p>Jo</p>
@@ -31,34 +43,23 @@
                     <p>Po</p>
                 </h1>
                 <div class="choice">
-                    <img class="choice-cpu" data-js="cpu-choice">
+                    <img class="choice-cpu" data-js="cpu-choice" alt="jokenpo-svg">
                 </div>
             </section>
             <section class="jokenpo">
                 <div class="jokenpo-choice" data-js="rock">
-                    <img src="rock.svg" data-js="rockOption">
+                    <img src="rock.svg" data-js="rockOption" alt="jokenpo-svg">
                 </div>
                 <div class="jokenpo-choice" data-js="paper">
-                    <img src="paper.svg" data-js="paperOption">
+                    <img src="paper.svg" data-js="paperOption" alt="jokenpo-svg">
                 </div>
                 <div class="jokenpo-choice" data-js="scissor">
-                    <img src="scissor.svg" data-js="scissorOption">
+                    <img src="scissor.svg" data-js="scissorOption" alt="jokenpo-svg">
                 </div>
             </section>
         </div>
     </main> 
 <script src="data.js"></script>
 <script src="main.js"></script>
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js')
-      .then(function () {
-        console.log('service worker registered');
-      })
-      .catch(function () {
-        console.warn('service worker failed');
-      });
-  }
-</script>
 </body>
 </html>
