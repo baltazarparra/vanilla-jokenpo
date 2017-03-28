@@ -1,19 +1,18 @@
-var CACHE_NAME = 'static-v3';
+var CACHE_NAME = 'static-v4';
 
 self.addEventListener('install', function (event) {
   event.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
       return cache.addAll([
-        '/',
-        '/data.js',
-        '/favicon.ico',
-        '/index.html',
-        '/main.js',
-        '/paper.svg',
-        '/refresh.svg',
-        '/rock.svg',
-        '/scissor.svg',
-        '/style.css',
+        'data.js',
+        'favicon.ico',
+        'index.html',
+        'main.js',
+        'paper.svg',
+        'refresh.svg',
+        'rock.svg',
+        'scissor.svg',
+        'style.css',
       ]);
     })
   )
