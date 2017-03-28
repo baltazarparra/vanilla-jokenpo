@@ -4,8 +4,8 @@
   "theme_color": "#d29161",
   "background_color": "#d29161",
   "display": "fullscreen",
-  "Scope": "/",
-  "start_url": "/",
+  "Scope": "/vanilla-jokenpo",
+  "start_url": "/vanilla-jokenpo",
   "icons": [
     {
       "src": "images/icons/icon-72x72.png",
